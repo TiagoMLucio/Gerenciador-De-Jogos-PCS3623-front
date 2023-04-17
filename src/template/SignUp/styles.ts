@@ -28,7 +28,7 @@ export const MainContainer = styled.div`
     justify-content: center;
     gap: 44px;
 
-    background: url('/images/login.png') no-repeat fixed center;
+    background: url('images/login.png') no-repeat fixed center;
     -webkit-background-size: cover;
 
     width: 100vw;
