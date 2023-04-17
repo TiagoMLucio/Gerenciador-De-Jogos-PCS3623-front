@@ -1,4 +1,6 @@
+import { LogoutOutlined } from '@mui/icons-material';
 import { useRouter } from 'next/router';
+import IconButton from '@mui/material/IconButton';
 import React from 'react';
 import * as S from './styles';
 
@@ -16,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
                 <S.Page
                     active={currentPage === 'store'}
                     onClick={() => {
-                        currentPage !== 'store' && router.push('/store');
+                        currentPage !== 'store' && router.push('/user/store');
                     }}
                 >
                     Loja
@@ -25,10 +27,19 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
                     active={currentPage === 'community'}
                     onClick={() => {
                         currentPage !== 'community' &&
-                            router.push('/community');
+                            router.push('/user/community');
                     }}
                 >
                     Comunidade
+                </S.Page>
+                <S.Page
+                    active={currentPage === 'friends'}
+                    onClick={() => {
+                        currentPage !== 'friends' &&
+                            router.push('/user/friends');
+                    }}
+                >
+                    Amigos
                 </S.Page>
                 <S.Page
                     active={currentPage === 'profile'}
@@ -40,6 +51,15 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
                     Perfil
                 </S.Page>
             </S.Pages>
+            <IconButton
+                onClick={() => {
+                    router.push('/');
+                }}
+                aria-label="logout"
+                size="large"
+            >
+                <LogoutOutlined fontSize="inherit" htmlColor="black" />
+            </IconButton>
         </S.Wrapper>
     );
 };
