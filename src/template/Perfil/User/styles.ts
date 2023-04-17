@@ -20,6 +20,8 @@ export const Wrapper = styled.div`
     height: 100%;
     width: 100vw;
     padding: 16px;
+
+    margin-top: 104px;
 `;
 
 export const MainContainer = styled.div`

@@ -7,11 +7,12 @@ export const Wrapper = styled.div`
     padding: 16px 64px;
     gap: 200px;
 
-    position: absolute;
+    position: fixed;
 
     height: 104px;
     width: 100vw;
     background-color: white;
+    z-index: 10;
 `;
 
 export const Logo = styled(Image)``;
