@@ -1,7 +1,9 @@
+import GameCard from 'components/GameCard';
+import Header from 'components/Header';
 import { useRouter } from 'next/router';
+import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import GameCard from '../../../components/GameCard';
-import Header from '../../../components/Header';
+import NewGameModal from 'components/NewGameModal';
 import * as S from './styles';
 
 const UserProfileTemplate = () => {
@@ -10,8 +12,14 @@ const UserProfileTemplate = () => {
     const [id, setId] = useState('');
     const [otherUser, setOtherUser] = useState({});
 
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     // eslint-disable-next-line no-console
     console.log(otherUser);
+
+    const isDev = true;
 
     useEffect(() => {
         if (!router.isReady) return;
@@ -42,7 +50,29 @@ const UserProfileTemplate = () => {
                         </S.Infos>
                     </S.MainInfo>
                     <S.Games>
-                        <S.GamesTitle>Biblioteca de Jogos</S.GamesTitle>
+                        <S.SubTitle>
+                            <S.GamesTitle>
+                                {isDev
+                                    ? 'Jogos Publicados'
+                                    : 'Biblioteca de Jogos'}
+                            </S.GamesTitle>
+                            {isDev && (
+                                <Button
+                                    size="large"
+                                    sx={{
+                                        width: '200px'
+                                    }}
+                                    variant="contained"
+                                    onClick={handleOpen}
+                                >
+                                    Postar novo Jogo
+                                </Button>
+                            )}
+                            <NewGameModal
+                                handleClose={handleClose}
+                                open={open}
+                            />
+                        </S.SubTitle>
                         <GameCard
                             category="FPS"
                             name="Counter Strike Global Offensive"

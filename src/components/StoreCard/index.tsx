@@ -9,6 +9,7 @@ export type StoreCardProps = {
     launchDate: string;
     downloads: number;
     likes: number;
+    hasBuyButton?: boolean;
 };
 
 const StoreCard: React.FC<StoreCardProps> = ({
@@ -17,7 +18,8 @@ const StoreCard: React.FC<StoreCardProps> = ({
     image,
     launchDate,
     downloads,
-    likes
+    likes,
+    hasBuyButton = true
 }) => {
     return (
         <S.Game>
@@ -40,17 +42,19 @@ const StoreCard: React.FC<StoreCardProps> = ({
                     </S.OtherGameInfo>
                     <S.OtherGameInfo>Likes: {likes}</S.OtherGameInfo>
                 </S.GameInfoLeftWrapper>
-                <S.GameInfoRightWrapper>
-                    <Button
-                        size="medium"
-                        sx={{
-                            width: '100px'
-                        }}
-                        variant="contained"
-                    >
-                        Comprar
-                    </Button>
-                </S.GameInfoRightWrapper>
+                {hasBuyButton && (
+                    <S.GameInfoRightWrapper>
+                        <Button
+                            size="medium"
+                            sx={{
+                                width: '100px'
+                            }}
+                            variant="contained"
+                        >
+                            Comprar
+                        </Button>
+                    </S.GameInfoRightWrapper>
+                )}
             </S.GameInfo>
         </S.Game>
     );

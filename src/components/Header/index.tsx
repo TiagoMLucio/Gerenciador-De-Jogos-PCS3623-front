@@ -6,28 +6,31 @@ import * as S from './styles';
 
 export type HeaderProps = {
     currentPage: string;
+    isDev?: boolean;
 };
 
-const Header: React.FC<HeaderProps> = ({ currentPage }) => {
+const Header: React.FC<HeaderProps> = ({ currentPage, isDev }) => {
     const router = useRouter();
 
     return (
         <S.Wrapper>
             <S.Logo width="240px" height="160px" src="/images/logo.png" />
             <S.Pages>
-                <S.Page
-                    active={currentPage === 'store'}
-                    onClick={() => {
-                        currentPage !== 'store' && router.push('/user/store');
-                    }}
-                >
-                    Loja
-                </S.Page>
+                {!isDev && (
+                    <S.Page
+                        active={currentPage === 'store'}
+                        onClick={() => {
+                            currentPage !== 'store' && router.push('/loja');
+                        }}
+                    >
+                        Loja
+                    </S.Page>
+                )}
                 <S.Page
                     active={currentPage === 'community'}
                     onClick={() => {
                         currentPage !== 'community' &&
-                            router.push('/user/community');
+                            router.push('/comunidade');
                     }}
                 >
                     Comunidade
@@ -35,8 +38,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
                 <S.Page
                     active={currentPage === 'friends'}
                     onClick={() => {
-                        currentPage !== 'friends' &&
-                            router.push('/user/friends');
+                        currentPage !== 'friends' && router.push('/amigos');
                     }}
                 >
                     Amigos
@@ -44,8 +46,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
                 <S.Page
                     active={currentPage === 'profile'}
                     onClick={() => {
-                        currentPage !== 'profile' &&
-                            router.push('/user/profile');
+                        currentPage !== 'profile' && router.push('/perfil');
                     }}
                 >
                     Perfil

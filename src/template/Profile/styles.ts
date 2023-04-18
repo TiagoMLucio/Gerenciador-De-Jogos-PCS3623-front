@@ -86,11 +86,17 @@ export const Games = styled.div`
     width: 100%;
 `;
 
-export const GamesTitle = styled.p`
-    width: 100%;
-    font-size: 20px;
-    color: white;
+export const SubTitle = styled.div`
     background-color: #082636;
     padding: 8px;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+`;
+
+export const GamesTitle = styled.p`
+    font-size: 20px;
+    color: white;
 `;
