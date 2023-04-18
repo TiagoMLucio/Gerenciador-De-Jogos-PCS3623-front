@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -19,7 +18,7 @@ export const Header = styled.div`
     background-color: #fff;
 `;
 
-export const Logo = styled(Image)``;
+export const Logo = styled.img``;
 
 export const MainContainer = styled.div`
     display: flex;

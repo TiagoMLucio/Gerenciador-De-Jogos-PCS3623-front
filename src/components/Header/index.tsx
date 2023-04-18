@@ -6,9 +6,10 @@ import * as S from './styles';
 export type HeaderProps = {
     currentPage: string;
     isDev?: boolean;
+    wallet: number;
 };
 
-const Header: React.FC<HeaderProps> = ({ currentPage, isDev }) => {
+const Header: React.FC<HeaderProps> = ({ currentPage, isDev, wallet }) => {
     const router = useRouter();
 
     return (
@@ -54,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, isDev }) => {
             <S.Wallet>
                 <WalletOutlined htmlColor="white" fontSize="large" />
                 <S.WalletAmount>
-                    R$ {(123).toFixed(2).replace('.', ',')}
+                    R$ {wallet?.toFixed(2).replace('.', ',')}
                 </S.WalletAmount>
             </S.Wallet>
         </S.Wrapper>

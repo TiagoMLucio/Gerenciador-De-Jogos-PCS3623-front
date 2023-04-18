@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import styled from 'styled-components';
 
 export const Game = styled.div`
@@ -20,7 +19,7 @@ export const GameImageContainer = styled.div`
     overflow: hidden;
 `;
 
-export const GameImage = styled(Image)``;
+export const GameImage = styled.img``;
 
 export const GameInfo = styled.div`
     display: flex;

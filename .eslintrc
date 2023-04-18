@@ -17,24 +17,36 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "react-hooks",
+        "prettier"
+    ],
     "rules": {
+        "camelcase": "off",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "react/jsx-filename-extension": [
             1,
             {
-                "extensions": [".tsx"]
+                "extensions": [
+                    ".tsx"
+                ]
             }
         ],
         "@typescript-eslint/naming-convention": [
             "error",
             {
                 "selector": "interface",
-                "format": ["PascalCase"]
+                "format": [
+                    "PascalCase"
+                ]
             }
         ],
-        "@typescript-eslint/no-use-before-define": ["error"],
+        "@typescript-eslint/no-use-before-define": [
+            "error"
+        ],
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "react/react-in-jsx-scope": "off",
         "react/jsx-props-no-spreading": "off",
@@ -45,7 +57,9 @@
         "no-use-before-define": "off",
         "import/no-extraneous-dependencies": [
             "error",
-            { "devDependencies": true }
+            {
+                "devDependencies": true
+            }
         ],
         "no-plusplus": "off",
         "no-unused-expressions": "off",

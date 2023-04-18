@@ -1,15 +1,16 @@
-import { destroyCookie } from 'nookies';
-import React, { useContext, useState, createContext } from 'react';
+import { destroyCookie, parseCookies } from 'nookies';
+import React, { useContext, useState, createContext, useEffect } from 'react';
 
 import api from 'services/api';
 
 import UserService from 'services/UserService';
 
+import { useRouter } from 'next/router';
 import User from '../interfaces/User';
 
 interface ILoginRequest {
     email: string;
-    password: string;
+    senha: string;
 }
 
 interface AuthContextData {
@@ -22,6 +23,16 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
     const [user, setUser] = useState({} as User);
+    const router = useRouter();
+
+    useEffect(() => {
+        const getUser = async () => {
+            const { '@gerenciadorjogos:useId': userId } = parseCookies();
+            const myUser = await UserService.findById(userId);
+            setUser(myUser as User);
+        };
+        getUser();
+    }, []);
 
     const login = async (data: ILoginRequest) => {
         try {
@@ -32,14 +43,17 @@ export const AuthProvider: React.FC = ({ children }) => {
             };
 
             setUser(response.user);
+
+            router.push('/perfil');
         } catch (error) {
-            // Errors handling
+            // eslint-disable-next-line no-alert, @typescript-eslint/no-explicit-any
+            alert((error as any).response.data.message);
         }
     };
 
     const logout = () => {
-        destroyCookie(undefined, '@app:token');
-        destroyCookie(undefined, '@app:useId');
+        destroyCookie(undefined, '@gerenciadorjogos:token');
+        destroyCookie(undefined, '@gerenciadorjogos:useId');
     };
 
     return (
@@ -49,4 +63,6 @@ export const AuthProvider: React.FC = ({ children }) => {
     );
 };
 
-export default () => useContext(AuthContext);
+const useAuth = () => useContext(AuthContext);
+
+export default useAuth;

@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import styled from 'styled-components';
 
 export const User = styled.div`
@@ -21,7 +20,7 @@ export const UserImageContainer = styled.div`
     overflow: hidden;
 `;
 
-export const UserImage = styled(Image)``;
+export const UserImage = styled.img``;
 
 export const UserInfo = styled.div`
     display: flex;

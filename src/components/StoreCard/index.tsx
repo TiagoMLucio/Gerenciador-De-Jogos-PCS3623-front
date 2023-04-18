@@ -1,8 +1,11 @@
 import React from 'react';
 import { Button } from '@mui/material';
+import GameService from 'services/GameService';
 import * as S from './styles';
 
 export type StoreCardProps = {
+    conta_id: string;
+    jogo_id: string;
     name: string;
     category: string;
     image: string;
@@ -14,6 +17,8 @@ export type StoreCardProps = {
 };
 
 const StoreCard: React.FC<StoreCardProps> = ({
+    conta_id,
+    jogo_id,
     name,
     category,
     image,
@@ -23,24 +28,33 @@ const StoreCard: React.FC<StoreCardProps> = ({
     price = 0,
     hasBuyButton = true
 }) => {
+    const handleBuy = async () => {
+        await GameService.buyGame({
+            conta_id,
+            curtida: 0,
+            data_compra: new Date(),
+            jogo_id,
+            tempo_jogado: 0
+        });
+    };
+
     return (
         <S.Game>
             <S.GameImageContainer>
-                <S.GameImage
-                    width="200px"
-                    height="144px"
-                    src="/images/csgo.jpg"
-                />
+                <S.GameImage width="200px" height="144px" src={image} />
             </S.GameImageContainer>
             <S.GameInfo>
                 <S.GameInfoLeftWrapper>
-                    <S.GameName>{name + image}</S.GameName>
+                    <S.GameName>{name}</S.GameName>
                     <S.CategoryContainer>
                         <S.CategoryName>{category}</S.CategoryName>
                     </S.CategoryContainer>
                     <S.OtherGameInfo>Usuários: {downloads}</S.OtherGameInfo>
                     <S.OtherGameInfo>
-                        Data de lançamento: {launchDate}
+                        Data de lançamento:{' '}
+                        {((d: string[]): string => `${d[2]}/${d[1]}/${d[0]}`)(
+                            launchDate.split('T')[0].split('-')
+                        )}
                     </S.OtherGameInfo>
                     <S.OtherGameInfo>Likes: {likes}</S.OtherGameInfo>
                 </S.GameInfoLeftWrapper>
@@ -55,6 +69,7 @@ const StoreCard: React.FC<StoreCardProps> = ({
                                 width: '100px'
                             }}
                             variant="contained"
+                            onClick={handleBuy}
                         >
                             Comprar
                         </Button>

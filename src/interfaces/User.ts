@@ -1,4 +1,9 @@
 export default interface User {
-    id: string;
-    name: string;
+    conta_id: string;
+    nome_conta: string;
+    email: string;
+    senha: string;
+    carteira: number;
+    desenvolvedor: number;
+    imagem_perfil: string;
 }

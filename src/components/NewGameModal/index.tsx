@@ -10,14 +10,20 @@ import {
 import { Button, InputAdornment, TextField } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import MenuItem from '@mui/material/MenuItem';
+import GameService from 'services/GameService';
 import * as S from './styles';
 
 interface NewGameModalProps {
     open: boolean;
-    handleClose: (open: boolean) => void;
+    handleClose: () => void;
+    dev_id: string;
 }
 
-const NewGameModal: React.FC<NewGameModalProps> = ({ open, handleClose }) => {
+const NewGameModal: React.FC<NewGameModalProps> = ({
+    open,
+    handleClose,
+    dev_id
+}) => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
     const [size, setSize] = useState(0);
@@ -28,6 +34,18 @@ const NewGameModal: React.FC<NewGameModalProps> = ({ open, handleClose }) => {
     const handlePost = () => {
         // eslint-disable-next-line no-console
         console.log(name, price, size, launchDate, category, image);
+        GameService.publish({
+            capa: image,
+            categoria: category,
+            data_lanc: launchDate,
+            descricao: '',
+            dev_id,
+            nome_jogo: name,
+            preco: price,
+            tamanho: size
+        });
+
+        handleClose();
     };
 
     return (

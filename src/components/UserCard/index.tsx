@@ -24,8 +24,8 @@ const UserCard: React.FC<UserCardProps> = ({
         <S.User>
             <S.UserImageContainer>
                 <S.UserImage
-                    layout="fill"
-                    objectFit="contain"
+                    width="104px"
+                    height="104px"
                     src="/images/avatar.png"
                 />
             </S.UserImageContainer>

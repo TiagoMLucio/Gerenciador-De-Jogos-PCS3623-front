@@ -67,7 +67,7 @@ export const ImageContainer = styled.div`
     overflow: hidden;
 `;
 
-export const ProfileImage = styled(Image)``;
+export const ProfileImage = styled.img``;
 
 export const Infos = styled.div`
     display: flex;

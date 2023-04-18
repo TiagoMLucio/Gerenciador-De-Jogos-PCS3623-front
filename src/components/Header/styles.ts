@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -16,7 +15,7 @@ export const Wrapper = styled.div`
     z-index: 10;
 `;
 
-export const Logo = styled(Image)``;
+export const Logo = styled.img``;
 
 export const Pages = styled.div`
     display: flex;

@@ -26,15 +26,11 @@ const GameCard: React.FC<GameCardProps> = ({
     return (
         <S.Game>
             <S.GameImageContainer>
-                <S.GameImage
-                    width="200px"
-                    height="144px"
-                    src="/images/csgo.jpg"
-                />
+                <S.GameImage width="200px" height="144px" src={image} />
             </S.GameImageContainer>
             <S.GameInfo>
                 <S.GameInfoLeftWrapper>
-                    <S.GameName>{name + image}</S.GameName>
+                    <S.GameName>{name}</S.GameName>
                     <S.CategoryContainer>
                         <S.CategoryName>{category}</S.CategoryName>
                     </S.CategoryContainer>

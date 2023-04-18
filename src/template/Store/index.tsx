@@ -2,18 +2,29 @@ import { Search } from '@mui/icons-material';
 import { InputAdornment, TextField } from '@mui/material';
 import StoreCard from 'components/StoreCard';
 import Header from 'components/Header';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import useAuth from 'hooks/useAuth';
+import Game from 'interfaces/Game';
+import GameService from 'services/GameService';
 import * as S from './styles';
 
 const UserStoreTemplate = () => {
     const [search, setSearch] = useState('');
+    const [games, setGames] = useState<Game[]>([]);
 
-    // eslint-disable-next-line no-console
-    console.log(search);
+    const { user } = useAuth();
+
+    useEffect(() => {
+        const getGames = async () => {
+            const storeGames = await GameService.getGames(search);
+            setGames(storeGames);
+        };
+        getGames();
+    }, [search]);
 
     return (
         <S.Container>
-            <Header currentPage="store" />
+            <Header currentPage="store" wallet={user.carteira} />
             <S.Wrapper>
                 <S.MainContainer>
                     <TextField
@@ -59,42 +70,19 @@ const UserStoreTemplate = () => {
                     />
                     <S.SubTitle>Jogos Encontrados</S.SubTitle>
                     <S.Users>
-                        <StoreCard
-                            category="FPS"
-                            downloads={1000}
-                            launchDate="17/08/2010"
-                            likes={12432}
-                            name="Counter Strike Global Offensive"
-                            image=""
-                            price={200}
-                        />
-                        <StoreCard
-                            category="FPS"
-                            downloads={1000}
-                            launchDate="17/08/2010"
-                            likes={12432}
-                            name="Counter Strike Global Offensive"
-                            image=""
-                            price={200}
-                        />
-                        <StoreCard
-                            category="FPS"
-                            downloads={1000}
-                            launchDate="17/08/2010"
-                            likes={12432}
-                            name="Counter Strike Global Offensive"
-                            image=""
-                            price={200}
-                        />
-                        <StoreCard
-                            category="FPS"
-                            downloads={1000}
-                            launchDate="17/08/2010"
-                            likes={12432}
-                            name="Counter Strike Global Offensive"
-                            image=""
-                            price={200}
-                        />
+                        {games.map((game) => (
+                            <StoreCard
+                                conta_id={user.conta_id}
+                                jogo_id={game.jogo_id}
+                                category={game.categoria}
+                                downloads={game.quant_downloads as number}
+                                launchDate={game.data_lanc}
+                                likes={game.curtidas as number}
+                                name={game.nome_jogo}
+                                image={game.capa}
+                                price={game.preco}
+                            />
+                        ))}
                     </S.Users>
                 </S.MainContainer>
             </S.Wrapper>

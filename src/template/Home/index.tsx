@@ -7,6 +7,7 @@ import {
 import { Button, Checkbox, InputAdornment, TextField } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import useAuth from 'hooks/useAuth';
 import * as S from './styles';
 
 const HomeTemplate = () => {
@@ -17,12 +18,17 @@ const HomeTemplate = () => {
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-    const handleLogin = () => {
-        // eslint-disable-next-line no-console
-        console.log(email, password);
-    };
-
+    const { login } = useAuth();
     const router = useRouter();
+
+    const handleLogin = () => {
+        try {
+            login({ email, senha: password });
+        } catch (e) {
+            // eslint-disable-next-line no-console
+            console.error(e);
+        }
+    };
 
     return (
         <S.Container>

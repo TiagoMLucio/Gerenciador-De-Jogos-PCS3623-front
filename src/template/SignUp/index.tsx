@@ -13,6 +13,7 @@ import React, { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { useRouter } from 'next/router';
+import UserService from 'services/UserService';
 import * as S from './styles';
 
 const SignUpTemplate = () => {
@@ -29,16 +30,27 @@ const SignUpTemplate = () => {
 
     const isDev = value === 1;
 
+    const router = useRouter();
+
     const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
 
-    const handleSignUp = () => {
-        // eslint-disable-next-line no-console
-        console.log(email, password, image, username, isDev);
+    const handleSignUp = async () => {
+        try {
+            await UserService.register({
+                email,
+                senha: password,
+                imagem: image,
+                nome_conta: username,
+                desenvolvedor: isDev
+            });
+            router.push('/');
+        } catch (e) {
+            // eslint-disable-next-line no-alert, @typescript-eslint/no-explicit-any
+            alert((e as any).response.data.message);
+        }
     };
-
-    const router = useRouter();
 
     return (
         <S.Container>

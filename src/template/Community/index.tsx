@@ -3,6 +3,7 @@ import { InputAdornment, TextField } from '@mui/material';
 import Header from 'components/Header';
 import UserCard from 'components/UserCard';
 import React, { useState } from 'react';
+import useAuth from 'hooks/useAuth';
 import * as S from './styles';
 
 const UserCommunityTemplate = () => {
@@ -11,9 +12,11 @@ const UserCommunityTemplate = () => {
     // eslint-disable-next-line no-console
     console.log(search);
 
+    const { user } = useAuth();
+
     return (
         <S.Container>
-            <Header currentPage="community" />
+            <Header currentPage="community" wallet={user.carteira} />
             <S.Wrapper>
                 <S.MainContainer>
                     <TextField
