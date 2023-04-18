@@ -50,6 +50,15 @@ export const MainInfo = styled.div`
     padding: 32px;
 `;
 
+export const ButtonGroup = styled.div`
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    margin-top: -44px;
+`;
+
 export const ImageContainer = styled.div`
     border: 2px solid;
     height: 128px;

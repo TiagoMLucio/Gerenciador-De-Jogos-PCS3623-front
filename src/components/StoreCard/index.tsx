@@ -9,6 +9,7 @@ export type StoreCardProps = {
     launchDate: string;
     downloads: number;
     likes: number;
+    price: number;
     hasBuyButton?: boolean;
 };
 
@@ -19,6 +20,7 @@ const StoreCard: React.FC<StoreCardProps> = ({
     launchDate,
     downloads,
     likes,
+    price = 0,
     hasBuyButton = true
 }) => {
     return (
@@ -44,6 +46,9 @@ const StoreCard: React.FC<StoreCardProps> = ({
                 </S.GameInfoLeftWrapper>
                 {hasBuyButton && (
                     <S.GameInfoRightWrapper>
+                        <S.Price>
+                            R$ {price.toFixed(2).replace('.', ',')}
+                        </S.Price>
                         <Button
                             size="medium"
                             sx={{

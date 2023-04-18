@@ -63,3 +63,9 @@ export const GameInfoRightWrapper = styled.div`
     align-items: flex-end;
     justify-content: flex-end;
 `;
+
+export const FriendDate = styled.p`
+    color: lightgrey;
+    font-size: 14px;
+    margin-top: 4px;
+`;

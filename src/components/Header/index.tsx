@@ -1,6 +1,5 @@
-import { LogoutOutlined } from '@mui/icons-material';
 import { useRouter } from 'next/router';
-import IconButton from '@mui/material/IconButton';
+import { WalletOutlined } from '@mui/icons-material';
 import React from 'react';
 import * as S from './styles';
 
@@ -52,15 +51,12 @@ const Header: React.FC<HeaderProps> = ({ currentPage, isDev }) => {
                     Perfil
                 </S.Page>
             </S.Pages>
-            <IconButton
-                onClick={() => {
-                    router.push('/');
-                }}
-                aria-label="logout"
-                size="large"
-            >
-                <LogoutOutlined fontSize="inherit" htmlColor="black" />
-            </IconButton>
+            <S.Wallet>
+                <WalletOutlined htmlColor="white" fontSize="large" />
+                <S.WalletAmount>
+                    R$ {(123).toFixed(2).replace('.', ',')}
+                </S.WalletAmount>
+            </S.Wallet>
         </S.Wrapper>
     );
 };

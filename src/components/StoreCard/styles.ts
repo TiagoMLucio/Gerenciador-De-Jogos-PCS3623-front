@@ -67,6 +67,12 @@ export const GameInfoRightWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    justify-content: flex-end;
+    justify-content: space-between;
     min-height: 144px;
+`;
+
+export const Price = styled.p`
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
 `;

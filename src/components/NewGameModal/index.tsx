@@ -213,7 +213,7 @@ const NewGameModal: React.FC<NewGameModalProps> = ({ open, handleClose }) => {
                     />
                     <TextField
                         id="input-with-icon-textfield"
-                        label="Data de Lançamento"
+                        label="Categoria"
                         fullWidth
                         size="medium"
                         color="primary"

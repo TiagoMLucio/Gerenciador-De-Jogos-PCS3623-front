@@ -8,13 +8,15 @@ export type UserCardProps = {
     image: string;
     hasFriendButton?: boolean;
     id?: string;
+    friendDate?: string;
 };
 
 const UserCard: React.FC<UserCardProps> = ({
     name,
     image,
     hasFriendButton,
-    id
+    id,
+    friendDate
 }) => {
     const router = useRouter();
 
@@ -29,17 +31,6 @@ const UserCard: React.FC<UserCardProps> = ({
             </S.UserImageContainer>
             <S.UserInfo>
                 <S.Username>{name + image}</S.Username>
-                {hasFriendButton && (
-                    <Button
-                        size="medium"
-                        sx={{
-                            width: '200px'
-                        }}
-                        variant="contained"
-                    >
-                        Adicionar como Amigo
-                    </Button>
-                )}
                 <Button
                     size="medium"
                     sx={{
@@ -57,6 +48,19 @@ const UserCard: React.FC<UserCardProps> = ({
                 >
                     Acessar Perfil
                 </Button>
+                {hasFriendButton ? (
+                    <Button
+                        size="medium"
+                        sx={{
+                            width: '200px'
+                        }}
+                        variant="contained"
+                    >
+                        Adicionar como Amigo
+                    </Button>
+                ) : (
+                    <S.FriendDate>Amigos desde {friendDate}</S.FriendDate>
+                )}
             </S.UserInfo>
         </S.User>
     );

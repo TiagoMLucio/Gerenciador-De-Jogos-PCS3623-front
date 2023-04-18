@@ -59,11 +59,31 @@ const UserFriendsTemplate = () => {
                     />
                     <S.SubTitle>Amigos</S.SubTitle>
                     <S.Users>
-                        <UserCard name="Parry" image=" " />
-                        <UserCard name="Pedro" image=" " />
-                        <UserCard name="Hess" image=" " />
-                        <UserCard name="Pedrin" image=" " />
-                        <UserCard name="LucioT" image=" " />
+                        <UserCard
+                            name="Parry"
+                            image=" "
+                            friendDate="20/03/2018"
+                        />
+                        <UserCard
+                            name="Pedro"
+                            image=" "
+                            friendDate="20/03/2018"
+                        />
+                        <UserCard
+                            name="Hess"
+                            image=" "
+                            friendDate="20/03/2018"
+                        />
+                        <UserCard
+                            name="Pedrin"
+                            image=" "
+                            friendDate="20/03/2018"
+                        />
+                        <UserCard
+                            name="LucioT"
+                            image=" "
+                            friendDate="20/03/2018"
+                        />
                     </S.Users>
                 </S.MainContainer>
             </S.Wrapper>

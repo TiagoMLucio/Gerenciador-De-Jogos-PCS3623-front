@@ -66,6 +66,7 @@ const UserStoreTemplate = () => {
                             likes={12432}
                             name="Counter Strike Global Offensive"
                             image=""
+                            price={200}
                         />
                         <StoreCard
                             category="FPS"
@@ -74,6 +75,7 @@ const UserStoreTemplate = () => {
                             likes={12432}
                             name="Counter Strike Global Offensive"
                             image=""
+                            price={200}
                         />
                         <StoreCard
                             category="FPS"
@@ -82,6 +84,7 @@ const UserStoreTemplate = () => {
                             likes={12432}
                             name="Counter Strike Global Offensive"
                             image=""
+                            price={200}
                         />
                         <StoreCard
                             category="FPS"
@@ -90,6 +93,7 @@ const UserStoreTemplate = () => {
                             likes={12432}
                             name="Counter Strike Global Offensive"
                             image=""
+                            price={200}
                         />
                     </S.Users>
                 </S.MainContainer>

@@ -1,4 +1,5 @@
 import GameCard from 'components/GameCard';
+import { Edit, Logout } from '@mui/icons-material';
 import Header from 'components/Header';
 import { useRouter } from 'next/router';
 import { Button } from '@mui/material';
@@ -49,6 +50,27 @@ const UserProfileTemplate = () => {
                             <S.Email>Email</S.Email>
                         </S.Infos>
                     </S.MainInfo>
+                    <S.ButtonGroup>
+                        <Button
+                            size="large"
+                            fullWidth
+                            variant="contained"
+                            startIcon={<Edit />}
+                        >
+                            Editar dados da Conta
+                        </Button>
+                        <Button
+                            size="large"
+                            fullWidth
+                            variant="contained"
+                            onClick={() => {
+                                router.push('/');
+                            }}
+                            startIcon={<Logout />}
+                        >
+                            Logout
+                        </Button>
+                    </S.ButtonGroup>
                     <S.Games>
                         <S.SubTitle>
                             <S.GamesTitle>
